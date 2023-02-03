@@ -14,10 +14,10 @@ class AddClinicToDoctorsTable extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->bigInteger('clinic_id')->unsigned()->after('id');
+            $table->bigInteger('clinic_id')->unsigned()->after('id')->nullable();
             $table->foreign('clinic_id')->references('id')->on('clinics');
             
-            $table->bigInteger('schedule_id')->unsigned()->after('fullname');
+            $table->bigInteger('schedule_id')->unsigned()->after('id')->nullable();
             $table->foreign('schedule_id')->references('id')->on('schedules');
         });
     }

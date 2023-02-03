@@ -19,9 +19,9 @@ class DoctorController extends Controller
     }
     public function index()
     {
-        // $doctor = Doctor::get();
-        // return $doctor;
-        return response()->json($this->doctor->paginate());
+        $doctor = Doctor::get();
+        return $doctor;
+        // return response()->json($this->doctor->paginate());
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use App\Models\Clinic;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\Clinic::factory(10)->create();
+        // Doctor::factory()->count(24)->create();
+
     }
 }

@@ -26,7 +26,6 @@ class DoctorRequest extends FormRequest
         return [
             'fullname' => 'required',
             'especialidad' => 'required',
-            'fullname' => 'required',
             'clinic_id' => 'required'
         ];
     }

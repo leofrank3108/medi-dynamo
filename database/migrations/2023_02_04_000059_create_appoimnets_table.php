@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddClinicToDoctorsTable extends Migration
+class CreateAppoimnetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class AddClinicToDoctorsTable extends Migration
      */
     public function up()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            $table->bigInteger('clinic_id')->unsigned()->after('id')->nullable();
+        Schema::create('appoimnets', function (Blueprint $table) {
+
+            
+            $table->bigInteger('clinic_id')->unsigned()->nullable();
             $table->foreign('clinic_id')->references('id')->on('clinics');
             
-            $table->bigInteger('schedule_id')->unsigned()->after('id')->nullable();
+            $table->bigInteger('schedule_id')->unsigned()->nullable();
             $table->foreign('schedule_id')->references('id')->on('schedules');
+
+            $table->bigInteger('doctor_id')->unsigned()->nullable();
+            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->timestamps();
         });
     }
 
@@ -29,8 +35,6 @@ class AddClinicToDoctorsTable extends Migration
      */
     public function down()
     {
-        Schema::table('doctors', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('appoimnets');
     }
 }

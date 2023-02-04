@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+//use Illuminate\Http\Requests\DoctorRequest;
+
 
 class DoctorController extends Controller
 {
+    protected $doctor;
     /**
      * Display a listing of the resource.
      *

@@ -15,7 +15,6 @@ class ClinicController extends Controller
 
     public function index()
     {
-        // dd('aca');
         return response()->json($this->clinic->paginate());
     }
 }

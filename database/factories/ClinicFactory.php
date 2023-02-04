@@ -14,9 +14,8 @@ class ClinicFactory extends Factory
      */
     public function definition()
     {
-        $clinic = 'Clinica';
         return [
-            'name'   => $this->faker->sentence
+            'name'   =>'clinica '. $this->faker->name
         ];
     }
 }

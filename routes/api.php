@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\AppoimentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::apiResource('doctor', App\Http\Controllers\DoctorController::class);
 // Route::apiResource('doctor',[DoctorController::class]);
 
 Route::get('clinic', [ClinicController::class, 'index']);
+Route::get('appoiment', [AppoimentController::class, 'index']);
 // Route::post('doctor', [DoctorController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -12,13 +12,13 @@ class Doctor extends Model
     protected $fillable = [
         'fullname',
         'especialidad',
-        'clinic_id',
-        'schedule_id'
+        'clinic_ids',
+        'schedule_ids'
         
     ];
 
-    public function clinics()
-    {
-        return $this->hasMany(Clinic::class);
-    }
+    // public function clinics()
+    // {
+    //     return $this->hasMany(Clinic::class);
+    // }
 }

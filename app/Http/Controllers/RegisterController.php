@@ -10,6 +10,7 @@ class RegisterController extends Controller
 {
     public function signUp(Request $request)
     {
+        // dd($request);
 
         $request->validate([
             'name' => 'required|string',

@@ -21,15 +21,7 @@ class DoctorController extends Controller
     }
     public function index()
     {
-        $doctor = Doctor::join('appoiments', 'appoiments.doctor_id', '=', 'doctors.id')
-        ->join('clinics', 'clinics.id', '=', 'appoiments.clinic_id')
-        ->join('schedules', 'schedules.id', '=', 'appoiments.schedule_id')
-        ->select('doctors.id','doctors.fullname as name', 'doctors.especialidad', 'clinics.name as clinic')
-        // ->groupBy('name')
-        // ->distinct('doctors.id')
-        // ->where('clinics.id', 'appoiments.clinic_id')
-        // >groupBy('appoiments.clinic_id', 'appoiments.doctor_id')
-        ->get();
+        $doctor = Doctor::get();
         
         return $doctor;
     }
@@ -46,7 +38,12 @@ class DoctorController extends Controller
     
     public function store(Request $request)
     {
-        $doctor = $this->doctor->create($request->all());
+        $doctor = Doctor::create([
+            'fullname' => $request->fullname,
+            'especialidad' => $request->especialidad,
+            'clinic_ids' => json_encode($request->clinic_ids),
+            'schedule_ids' => json_encode($request->schedule_ids)
+            ]);
 
         return response()->json($doctor, 201);
     }

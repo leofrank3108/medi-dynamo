@@ -23,15 +23,12 @@ use App\Http\Controllers\AppoimentController;
 
 
 Route::post('register', [RegisterController::class, 'signUp']);
-Route::post('login', [LoginController::class, 'signIn']);
-Route::post('logout', [LogoutController::class, 'logout']);
 Route::apiResource('doctor', App\Http\Controllers\DoctorController::class);
-// Route::apiResource('doctor',[DoctorController::class]);
 
 Route::get('clinic', [ClinicController::class, 'index']);
 Route::get('appoiment', [AppoimentController::class, 'index']);
-// Route::post('doctor', [DoctorController::class, 'store']);
+Route::post('login', [LoginController::class, 'signIn']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('logout', [\App\Http\Controllers\LogoutController::class, 'logout']);
+    });
